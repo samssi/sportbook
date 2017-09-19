@@ -1,21 +1,21 @@
 {
     "AttributeDefinitions": [
         {
-            "AttributeName": "eventId",
+            "AttributeName": "username",
             "AttributeType": "S"
         },
         {
-            "AttributeName": "date",
-            "AttributeType": "S"
+            "AttributeName": "datetime",
+            "AttributeType": "N"
         }
     ],
     "KeySchema": [
         {
-            "AttributeName": "eventId",
+            "AttributeName": "username",
             "KeyType": "HASH"
         },
         {
-            "AttributeName": "date",
+            "AttributeName": "datetime",
             "KeyType": "SORT"
         }
     ],

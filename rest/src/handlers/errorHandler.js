@@ -1,4 +1,4 @@
-const bunyan = require("bunyan").createLogger({name: "sportbook-rest-handler-errorHandler"});
+const logger = require("bunyan").createLogger({name: "sportbook-rest-handler-errorHandler"});
 
 function errorHandler(err, req, res, next) {
     logger.error(err, "Internal server error");
