@@ -1,0 +1,20 @@
+{
+  "name": "sportbook-rest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "samssi",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.118.0",
+    "body-parser": "^1.18.1",
+    "bunyan": "^1.8.12",
+    "cors": "^2.8.4",
+    "express": "^4.15.4",
+    "helmet": "^3.8.1"
+  }
+}
