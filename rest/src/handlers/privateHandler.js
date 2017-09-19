@@ -11,7 +11,17 @@ const dynamoDB = new AWS.DynamoDB(
     });
 
 router.get("/runlog", (req, res) => {
-    dynamoDB.scan({"TableName": "runlog"}, (err, data) => returnData(err, data, res));
+    const keyConditions = {
+        TableName: "runlog",
+        ExpressionAttributeValues: {
+            ":v1": {
+              S: "samssi"
+            }
+        },
+        KeyConditionExpression: "username = :v1",
+        ScanIndexForward: false
+    };
+    dynamoDB.query(keyConditions, (err, data) => returnData(err, data, res));
 });
 
 router.put("/runlog", (req, res) => {
