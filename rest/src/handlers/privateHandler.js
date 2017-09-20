@@ -3,44 +3,21 @@ const router = require("express").Router();
 const AWS = require("aws-sdk");
 const uuidv4 = require("uuid/v4");
 const dateFormat = require("dateformat");
+const runlogQueries = require("../queries/runlogQueries");
 const dynamoDB = new AWS.DynamoDB(
     {
         apiVersion: "2012-08-10",
         endpoint: new AWS.Endpoint("http://localhost:8000"),
         region: "eu-west-1"
-    });
+    }
+);
 
 router.get("/runlog", (req, res) => {
-    const keyConditions = {
-        TableName: "runlog",
-        ExpressionAttributeValues: {
-            ":v1": {
-              S: "samssi"
-            }
-        },
-        KeyConditionExpression: "username = :v1",
-        ScanIndexForward: false
-    };
-    dynamoDB.query(keyConditions, (err, data) => returnData(err, data, res));
+    dynamoDB.query(runlogQueries.getRunlogByUsername("samssi"), (err, data) => returnData(err, data, res));
 });
 
 router.put("/runlog", (req, res) => {
-    const epochNow = (new Date()).getTime();
-    const item = {
-        Item: {
-            "username": {
-                S: "samssi"
-            },
-            "datetime": {
-                N: epochNow.toString()
-            },
-            "length": {
-                N: "10"
-            }
-        },
-        TableName: "runlog"
-    }
-    dynamoDB.putItem(item, (err, data) => returnData(err, data, res));
+    dynamoDB.putItem(runlogQueries.putRunlogItemForUsername("samssi"), (err, data) => returnData(err, data, res));
 });
 
 const returnData = (err, data, res) => {
