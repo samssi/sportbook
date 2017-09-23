@@ -7,16 +7,27 @@ const booking = {
 
 let BookResultForm = (props) => {
     const { handleSubmit } = props;
+
     return (
     <div style={booking}>
         <form onSubmit={ handleSubmit }>
             <div>
                 <label htmlFor="Running (km)"></label>
-                <Field name="runInKm" type="text"/>
+                <Field 
+                  name="runInKm" 
+                  component="input"
+                  type="text"
+                  placeholder="6"
+                  />
             </div>
             <div>
                 <label htmlFor="Date"></label>
-                <Field name="runDate" type="text"/>
+                <Field 
+                 name="runDate" 
+                 component="input" 
+                 type="text"
+                 placeholder="1.1.2017..."
+                 />
             </div>
             <button type="submit">Submit</button>
         </form>
@@ -24,6 +35,4 @@ let BookResultForm = (props) => {
     );
 }
 
-BookResultForm = reduxForm({form: "bookResultForm"})(BookResultForm)
-
-export default BookResultForm;
+export default reduxForm({form: "bookResultForm"})(BookResultForm)
