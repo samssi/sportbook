@@ -1,14 +1,17 @@
 import React from "react";
 import Footer from "./Footer"
+import Header from "./Header"
 
-const fontStyle = {
+const appStyle = {
     fontFamily: "'Indie Flower', cursive",
-    fontSize: "30px"
+    fontSize: "30px",
+    marginLeft: "15px",
+    marginTop: "15px"
 }
 
 const Application = () => (
-    <div style={fontStyle}>
-        <div>SportBook</div>
+    <div style={appStyle}>
+        <Header />
         <Footer />
     </div>
 );
