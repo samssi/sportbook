@@ -1,7 +1,12 @@
 import React from "react";
 
 const footer = {
-    textAlign: "center"
+    textAlign: "center",
+    position: "absolute",
+    left: "0px",
+    bottom: "0px",
+    height: "100px",
+    width: "100%"
 };
 
 const Footer = () => (
