@@ -1,6 +1,8 @@
 import React from "react";
 
 const footer = {
+    fontSize: "16px",
+    fontWeight: "bold",
     textAlign: "center",
     position: "absolute",
     left: "0px",
