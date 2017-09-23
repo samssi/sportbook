@@ -1,4 +1,4 @@
-exports.putRunlogItemForUsername = (username) => {
+exports.putRunlogItemForUsername = (username, length) => {
     const epochNow = (new Date()).getTime();
     return {
         Item: {
@@ -9,7 +9,7 @@ exports.putRunlogItemForUsername = (username) => {
                 N: epochNow.toString()
             },
             "length": {
-                N: "10"
+                N: length.toString()
             }
         },
         TableName: "runlog"

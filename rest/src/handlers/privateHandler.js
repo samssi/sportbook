@@ -4,6 +4,7 @@ const uuidv4 = require("uuid/v4");
 const dateFormat = require("dateformat");
 const runlogQueries = require("../queries/runlogQueries");
 const connect = require("../dynamodb/dynamoDB").connect
+const kmInMeters = require("../util/calculator").kmInMeters;
 
 
 router.get("/runlog", (req, res) => {
@@ -11,7 +12,10 @@ router.get("/runlog", (req, res) => {
 });
 
 router.put("/runlog", (req, res) => {
-    connect.putItem(runlogQueries.putRunlogItemForUsername("samssi"), (err, data) => returnData(err, data, res));
+    const payload = req.body;
+    const meters = kmInMeters(payload.runInKm);
+    console.log(meters);
+    connect.putItem(runlogQueries.putRunlogItemForUsername("samssi", meters), (err, data) => returnData(err, data, res));
 });
 
 const returnData = (err, data, res) => {
