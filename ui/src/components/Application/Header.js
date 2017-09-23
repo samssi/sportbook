@@ -1,6 +1,7 @@
 import React from "react";
 
 const header = {
+    marginBottom: "15px",
     fontWeight: "bold"
 };
 

@@ -1,6 +1,7 @@
 import React from "react";
 import Footer from "./Footer"
 import Header from "./Header"
+import BookResult from "../Result/BookResult"
 
 const appStyle = {
     fontFamily: "'Indie Flower', cursive",
@@ -12,6 +13,7 @@ const appStyle = {
 const Application = () => (
     <div style={appStyle}>
         <Header />
+        <BookResult />
         <Footer />
     </div>
 );
