@@ -1,15 +1,12 @@
 import React from "react";
+import BookResultForm from "../../containers/BookResultForm"
 
-const booking = {
-    marginLeft: "50px"
-};
-
-const BookResult = () => (
-    <div style={booking}>
-        <p>
-            Book your results here!
-        </p>
-    </div>
-)
-
-export default BookResult;
+const BookResult = () => {
+    submit = (values) => {
+        console.log(values);
+    }
+    
+    return (
+        <BookResultForm onSubmit={this.submit} />
+    );
+}

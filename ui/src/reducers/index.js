@@ -1,6 +1,10 @@
 import { combineReducers } from "redux";
+import { reducer as formReducer } from "redux-form";
 
-const sportbookApp = combineReducers({
+const rootReducer = combineReducers({
+    form: formReducer
 });
 
-export default sportbookApp;
+const store = createStore(rootReducer);
+
+export default rootReducer;
