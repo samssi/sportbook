@@ -8,7 +8,7 @@ function readFileFromRelativePath(file) {
 }
 
 function createTables() {
-    const runlog = readFileFromRelativePath("../dynamodb/runlog/tables/runlog.json");
+    const runlog = readFileFromRelativePath("./dynamodb/runlog/tables/runlog.json");
     connect.createTable(runlog, (err, data) => readResponse(err, data));
 }
 
