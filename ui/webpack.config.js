@@ -7,7 +7,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 });
 
 module.exports = {
-  entry: "./src/index.jsx",
+  entry: "./src/index.js",
   plugins: [
     HtmlWebpackPluginConfig
   ],
