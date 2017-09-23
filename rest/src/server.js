@@ -14,7 +14,7 @@ const router = express.Router();
 const apiVersion = "/api/v1/";
 
 // Setup middleware
-//app.use(cors);
+router.all("*", cors());
 app.use(router);
 app.use(helmet());
 app.use(bodyParser.json());
