@@ -10,17 +10,17 @@ const databaseConnectionError = require("../appErrors").databaseConnectionError;
 const internalError = require("../appErrors").internalError;
 
 router.get("/runlog", (req, res) => {
-    connect.query(runlogQueries.getRunlogByUsername("samssi"), (err, data) => returnDatabaseData(err, data, res));
+    connect.query(runlogQueries.getRunlogByUsername("samssi"), (err, data) => returnDatabaseDataOrFail(err, data, res));
 });
 
 router.put("/runlog", validate({body: schema.runlog}), (req, res) => {
     const payload = req.body;
     const meters = kmInMeters(payload.runInKm);
     console.log(meters);
-    connect.putItem(runlogQueries.putRunlogItemForUsername("samssi", meters), (err, data) => returnDatabaseData(err, data, res));
+    connect.putItem(runlogQueries.putRunlogItemForUsername("samssi", meters), (err, data) => returnDatabaseDataOrFail(err, data, res));
 });
 
-const returnDatabaseData = (err, data, res) => {
+const returnDatabaseDataOrFail = (err, data, res) => {
     if (err.name === ("ResourceNotFoundException" || err.name === "NetworkingError")) {
         logger.error(formatErrorMessage(databaseConnectionError, err));
         res
