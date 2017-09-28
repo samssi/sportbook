@@ -10,7 +10,14 @@ function submit(values) {
     .then((response) => {
         console.log(response.data);
     })
-    .catch((error) => { console.log("Error") });
+    .catch((err) => { 
+        if (err.name = "DatabaseDown") {
+            console.log("Database is down, try again later...")
+        }
+        else {
+            console.log("Something went wrong! Try again later...");
+        }
+     });
 }
 
 const BookResult = (onFormSubmit) => (
