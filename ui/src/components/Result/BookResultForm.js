@@ -11,20 +11,27 @@ const booking = {
 
 const renderNumeric = ({input, label, type, meta: { touched, error }}) => {
     return (
-    <div>
+    <span>
         <label>
             {label}
         </label>
-        <input {...input} placeholder={label} type={type} />
-        {touched && 
-        (error &&
-            <span>
-                {error}
-            </span>
-        )}
-    </div>
+        <input {...input} placeholder={label} type={type} style={validationStyle(touched, error)} />
+    </span>
     );
 }
+
+const validationStyle = (touched, error) => {
+    if (touched && error) {
+        return errorStyle;
+    }
+    else {
+        return {};
+    }
+}
+
+const errorStyle = {
+    color: "red"
+};
 
 let BookResultForm = (props) => {
     const { handleSubmit } = props;
