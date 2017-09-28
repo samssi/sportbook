@@ -11,7 +11,7 @@ function submit(values) {
         console.log(response.data);
     })
     .catch((err) => { 
-        if (err.name = "DatabaseConnectionError") {
+        if (err.response.data === "DatabaseConnectionError") {
             console.log("Database connection error! Try again later...")
         }
         else {
