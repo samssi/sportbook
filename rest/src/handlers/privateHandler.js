@@ -21,7 +21,6 @@ router.put("/runlog", validate({body: schema.runlog}), (req, res) => {
 });
 
 const returnDatabaseData = (err, data, res) => {
-    console.log(databaseConnectionError);
     if (err.name === ("ResourceNotFoundException" || err.name === "NetworkingError")) {
         logger.error(formatErrorMessage(databaseConnectionError, err));
         res
