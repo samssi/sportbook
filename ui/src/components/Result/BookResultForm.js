@@ -1,5 +1,6 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import { renderNumeric } from "../Form/NumericField"
 import { nbsp } from "../../helpers/unicodeMarkup"
 
 const required = value => (value ? undefined : 'Required');
@@ -7,30 +8,6 @@ const alphaNumeric = value => (value && /[^0-9 ]/i.test(value) ? 'Only alphanume
 
 const booking = {
     marginLeft: "50px"
-};
-
-const renderNumeric = ({input, label, type, meta: { touched, error }}) => {
-    return (
-    <span>
-        <label>
-            {label}
-        </label>
-        <input {...input} placeholder={label} type={type} style={validationStyle(touched, error)} />
-    </span>
-    );
-}
-
-const validationStyle = (touched, error) => {
-    if (touched && error) {
-        return errorStyle;
-    }
-    else {
-        return {};
-    }
-}
-
-const errorStyle = {
-    color: "red"
 };
 
 let BookResultForm = (props) => {
